@@ -3,7 +3,7 @@ run-name: ${{ github.ref }} <${{ github.actor }}>
 on:
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   changed_files:
