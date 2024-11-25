@@ -20,4 +20,15 @@ jobs:
           id: missing-updates
           uses: python3 ./tests/check_file_updates.py ${{ steps.changed-files.outputs.all_changed_files }}
 
-
+      - name: Add comments to PR
+        uses: actions/github-script@v7
+        if: steps.potential-issues.outputs.warnings
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: ${{ steps.potential-issues.outputs.warnings }}
+            })
