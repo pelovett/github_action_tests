@@ -18,6 +18,6 @@ jobs:
 
       - name: Check for missing updates
         id: missing-updates
-        uses: python3 ./tests/check_file_updates.py ${{ steps.changed-files.outputs.all_changed_files }}
+        run: python3 ./tests/check_file_updates.py ${{ steps.changed-files.outputs.all_changed_files }}
 
 
