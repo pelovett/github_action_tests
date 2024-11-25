@@ -16,16 +16,9 @@ jobs:
         id: changed-files
         uses: tj-actions/changed-files@v45
 
-<<<<<<< Updated upstream:.github/workflows/detect_file_changes.yaml
-      - name: Check for missing updates
-        id: missing-updates
-        run: python3 ./tests/check_file_updates.py ${{ steps.changed-files.outputs.all_changed_files }}
-
-=======
       - name: Check for issues
-          id: potential-issues
-          uses: python3 ./tests/pr_checks.py ${{ steps.changed-files.outputs.all_changed_files }}
->>>>>>> Stashed changes:.github/detect_file_changes.yaml
+        id: potential-issues
+        uses: python3 ./tests/pr_checks.py ${{ steps.changed-files.outputs.all_changed_files }}
 
       - name: Add comments to PR
         uses: actions/github-script@v7
