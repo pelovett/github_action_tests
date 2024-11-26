@@ -10,7 +10,8 @@ def check_for_changed_files(filepaths: List[str]):
         warnings.append("If you're changing a/b.txt make sure to also update a/c.txt !")
 
     with open(os.environ["GITHUB_OUTPUT"], 'a') as output_buf:
-        output_buf.write(f"warnings={'\n'.join(warnings)}")
+        warnings_str = '\n'.join(warnings)
+        output_buf.write(f"warnings={warnings_str}")
 
 
 if __name__ == "__main__":
