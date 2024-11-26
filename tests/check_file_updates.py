@@ -13,7 +13,7 @@ def check_for_changed_files(filepaths: List[str]):
 
     with open(os.environ["GITHUB_OUTPUT"], "a") as output_buf:
         warnings_str = "\n".join(warnings)
-        output_buf.write(f"warnings={warnings_str}")
+        output_buf.write(f"output<<EOF\nwarnings={warnings_str}\nEOF\n")
 
 
 if __name__ == "__main__":
