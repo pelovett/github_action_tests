@@ -2,6 +2,8 @@ name: detect-file-changes
 run-name: ${{ github.ref }} <${{ github.actor }}>
 on:
   pull_request_target:
+    types:
+      - opened
     branches:
       - main
 
