@@ -5,12 +5,14 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   changed_files:
     runs-on: ubuntu-latest  # windows-latest || macos-latest
     name: Test changed-files
-    permissions:
-          issues: write
     steps:
       - uses: actions/checkout@v4
 
