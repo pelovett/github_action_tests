@@ -9,12 +9,12 @@ def check_for_changed_files(filepaths: List[str]):
     if "a/b.txt" in filepaths and "a/c.txt" not in filepaths:
         print(f"User has edited a/b.txt but not a/c.txt")
         warnings.append(
-            "If you're changing\n```\n/arion/arion-kraken/scripts/etl/kraken_traffic/rebuild/gen_rebuild_reph_kraken_traffic.sql\n```\nmake sure to also update\n```\n/arion/arion-kraken/scripts/etl/kraken_traffic/gen_reph_kraken_traffic.sqls\n```"
+            "If you're changing\n\`\`\`\n/arion/arion-kraken/scripts/etl/kraken_traffic/rebuild/gen_rebuild_reph_kraken_traffic.sql\n\`\`\`\nmake sure to also update\n\`\`\`\n/arion/arion-kraken/scripts/etl/kraken_traffic/gen_reph_kraken_traffic.sqls\n\`\`\`"
         )
 
     with open(os.environ["GITHUB_OUTPUT"], "a") as output_buf:
         warnings_str = "\n".join(warnings)
-        output_buf.write(f"output<<EOF\n{warnings_str}\nEOF\n")
+        output_buf.write(f"output<<EOF\nwarnings={warnings_str}\nEOF\n")
 
 
 if __name__ == "__main__":
