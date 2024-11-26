@@ -16,6 +16,10 @@ def check_for_changed_files(filepaths: List[str]):
         warnings_str = "\n".join(warnings)
         output_buf.write(f"warnings<<EOF\n{warnings_str}\nEOF\n")
 
+    with open(os.environ["GITHUB_OUTPUT"], "a") as output_buf:
+        warnings_str = "\n".join(warnings)
+        output_buf.write(f"should_comment<<EOF\ntrue\nEOF\n")
+
 
 if __name__ == "__main__":
     check_for_changed_files(sys.argv[1:])
