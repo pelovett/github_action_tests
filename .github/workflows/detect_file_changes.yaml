@@ -35,7 +35,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const warnings = `{{ steps.potential-issues.outputs.warnings }}`;
+            const warnings = `${{ steps.potential-issues.outputs.warnings }}`;
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
