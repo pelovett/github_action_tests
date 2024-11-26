@@ -27,7 +27,7 @@ jobs:
       - name: Debug print
         id: debug-print
         run: |
-        echo '${{ steps.potential-issues.outputs }}'
+        echo '${{ steps.potential-issues.outputs }}' &&
         echo '${{ steps.potential-issues.outputs.warnings }}'
 
       - name: Add comments to PR
