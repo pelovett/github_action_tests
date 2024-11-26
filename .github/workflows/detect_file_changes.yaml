@@ -24,6 +24,10 @@ jobs:
         id: potential-issues
         run: python3 ./tests/check_file_updates.py ${{ steps.changed-files.outputs.all_changed_files }}
 
+      - name: Debug print
+        id: debug-print
+        run: echo "${{ steps.potential-issues.outputs.output }}"
+
       - name: Add comments to PR
         uses: actions/github-script@v7
         if: steps.potential-issues.outputs.output
